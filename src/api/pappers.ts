@@ -13,7 +13,7 @@ export async function fetchSuggestions(
   const params = new URLSearchParams({
     api_token: token,
     q: query,
-    longueur: "9",
+    longueur: "5",
     cibles: "nom_entreprise,representant",
   });
 
