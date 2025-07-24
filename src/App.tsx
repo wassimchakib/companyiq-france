@@ -1,5 +1,6 @@
 import { SearchProvider } from './context/SearchContext';
 import { SearchBar } from './components/SearchBar';
+import { ResultsList } from './components/ResultsList';
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           {/* Search Section */}
           <div className="max-w-3xl mx-auto mb-12">
             <SearchBar />
+          </div>
+
+          <div className="max-w-3xl mx-auto mb-12">
+            <ResultsList />
           </div>
 
         </div>

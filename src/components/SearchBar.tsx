@@ -24,6 +24,7 @@ export function SearchBar() {
     }
 
     setLoading(true);
+    
     const debouncedFetch = debounce(async () => {
       try {
         const data = await fetchSuggestions(query);
