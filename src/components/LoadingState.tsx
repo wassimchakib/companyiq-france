@@ -68,7 +68,7 @@ export function LoadingState() {
         ))}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%, 100% {
             transform: translateY(0) scale(1);
