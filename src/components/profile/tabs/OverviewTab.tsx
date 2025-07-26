@@ -9,38 +9,39 @@ interface OverviewTabProps {
 }
 
 export function OverviewTab({ company }: OverviewTabProps) {
+  const siege = company.siege;
   // Format complete address
   const formatCompleteAddress = () => {
     const parts = [];
     
     // Street address
-    if (company.siege.numero_voie && company.siege.type_voie && company.siege.libelle_voie) {
-      const streetAddress = `${company.siege.numero_voie} ${company.siege.type_voie} ${company.siege.libelle_voie}`;
+    if (siege?.numero_voie && siege?.type_voie && siege?.libelle_voie) {
+      const streetAddress = `${siege?.numero_voie} ${siege?.type_voie} ${siege?.libelle_voie}`;
       parts.push(streetAddress);
-    } else if (company.siege.adresse_ligne_1) {
-      parts.push(company.siege.adresse_ligne_1);
+    } else if (siege?.adresse_ligne_1) {
+      parts.push(siege?.adresse_ligne_1);
     }
     
     // Second address line
-    if (company.siege.adresse_ligne_2) {
-      parts.push(company.siege.adresse_ligne_2);
+    if (siege?.adresse_ligne_2) {
+      parts.push(siege?.adresse_ligne_2);
     }
     
     // Complement
-    if (company.siege.complement_adresse) {
-      parts.push(company.siege.complement_adresse);
+    if (siege?.complement_adresse) {
+      parts.push(siege?.complement_adresse);
     }
     
     // City with postal code
-    if (company.siege.code_postal && company.siege.ville) {
-      parts.push(`${company.siege.code_postal} ${company.siege.ville}`);
-    } else if (company.siege.ville) {
-      parts.push(company.siege.ville);
+    if (siege?.code_postal && siege?.ville) {
+      parts.push(`${siege?.code_postal} ${siege?.ville}`);
+    } else if (siege?.ville) {
+      parts.push(siege?.ville);
     }
     
     // Country
-    if (company.siege.pays) {
-      parts.push(company.siege.pays);
+    if (siege?.pays) {
+      parts.push(siege?.pays);
     }
     
     return parts.filter(Boolean).join(', ');
@@ -116,62 +117,62 @@ export function OverviewTab({ company }: OverviewTabProps) {
           )}
 
           <div className="grid grid-cols-1 gap-4">
-            {company.adresse_ligne_1 && (
+            {siege?.adresse_ligne_1 && (
               <CopyableField
                 label="Adresse ligne 1"
-                value={company.adresse_ligne_1}
+                value={siege?.adresse_ligne_1}
               />
             )}
             
-            {company.adresse_ligne_2 && (
+            {siege?.adresse_ligne_2 && (
               <CopyableField
                 label="Adresse ligne 2"
-                value={company.adresse_ligne_2}
+                value={siege?.adresse_ligne_2}
               />
             )}
             
-            {company.complement_adresse && (
+            {siege?.complement_adresse && (
               <CopyableField
                 label="Complément d'adresse"
-                value={company.complement_adresse}
+                value={siege?.complement_adresse}
               />
             )}
 
             <div className="grid grid-cols-2 gap-4">
-              {company.code_postal && (
+              {siege?.code_postal && (
                 <CopyableField
                   label="Code postal"
-                  value={company.code_postal}
+                  value={siege?.code_postal}
                 />
               )}
               
-              {company.ville && (
+              {siege?.ville && (
                 <CopyableField
                   label="Ville"
-                  value={company.ville}
+                  value={siege?.ville}
                 />
               )}
             </div>
 
-            {company.code_commune && (
+            {siege?.code_commune && (
               <CopyableField
                 label="Code commune"
-                value={company.code_commune}
+                value={siege?.code_commune}
               />
             )}
 
             <div className="grid grid-cols-2 gap-4">
-              {company.pays && (
+              {siege?.pays && (
                 <CopyableField
                   label="Pays"
-                  value={company.pays}
+                  value={siege?.pays}
                 />
               )}
               
-              {company.code_pays && (
+              {siege?.code_pays && (
                 <CopyableField
                   label="Code pays"
-                  value={company.code_pays}
+                  value={siege?.code_pays}
                 />
               )}
             </div>
