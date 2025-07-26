@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSearch } from "../hooks/useSearch";
 import { useSuggestions } from "../hooks/useSuggestions";
 import { usePagination } from "../hooks/usePagination";
@@ -9,11 +10,16 @@ import { EmptyState } from "./EmptyState";
 import { NoResultsState } from "./NoResultsState";
 import { ErrorState } from "./ErrorState";
 import { ResultsHeader } from "./ResultsHeader";
+import CompanyProfilePage from "./profile/CompanyProfilePage";
 
 export function ResultsList() {
   const { query } = useSearch();
   const { data, loading, error } = useSuggestions(query);
   const { toggleBookmark, isBookmarked } = useBookmarks();
+  
+  // Navigation state
+  const [selectedCompany, setSelectedCompany] = useState<any>(null);
+  const [currentView, setCurrentView] = useState<'list' | 'profile'>('list');
   
   const companies = data?.resultats_nom_entreprise || [];
   const {
@@ -31,7 +37,29 @@ export function ResultsList() {
     // TODO later
   };
 
-  // Render different states
+  // Handle card click - navigate to profile
+  const handleCardClick = (company: any) => {
+    setSelectedCompany(company);
+    setCurrentView('profile');
+  };
+
+  // Handle back to list
+  const handleBackToList = () => {
+    setCurrentView('list');
+    setSelectedCompany(null);
+  };
+
+  // Render profile page if company is selected
+  if (currentView === 'profile' && selectedCompany) {
+    return (
+      <CompanyProfilePage 
+        company={selectedCompany} 
+        onBack={handleBackToList} 
+      />
+    );
+  }
+
+  // Render different states for list view
   if (loading) return <LoadingState />;
   if (error) return <ErrorState error={error} />;
   if (!query.trim()) return <EmptyState />;
@@ -55,6 +83,7 @@ export function ResultsList() {
             isBookmarked={isBookmarked(company.siren)}
             onToggleBookmark={toggleBookmark}
             onExport={handleExport}
+            onCardClick={handleCardClick} // Add navigation handler
           />
         ))}
       </div>
