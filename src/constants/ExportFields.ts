@@ -1,0 +1,43 @@
+export interface ExportField {
+  key: string;
+  label: string;
+}
+
+export const EXPORT_FIELDS: ExportField[] = [
+  { key: "mention",                  label: "Mention" },
+  { key: "siren",                    label: "SIREN" },
+  { key: "siren_formate",            label: "SIREN formaté" },
+  { key: "diffusable",               label: "Diffusable" },
+  { key: "nom_entreprise",           label: "Nom d’entreprise" },
+  { key: "personne_morale",          label: "Personne morale" },
+  { key: "denomination",             label: "Dénomination" },
+  { key: "nom",                      label: "Nom" },
+  { key: "prenom",                   label: "Prénom" },
+  { key: "sexe",                     label: "Sexe" },
+  { key: "entreprise_cessee",        label: "Entreprise cessée" },
+  { key: "statut_rcs",               label: "Statut RCS" },
+  { key: "statut_consolide",         label: "Statut consolidé" },
+  { key: "categorie_juridique",      label: "Catégorie juridique" },
+  { key: "forme_juridique",          label: "Forme juridique" },
+  { key: "date_creation_formate",    label: "Date création" },
+  { key: "code_naf",                 label: "Code NAF" },
+  { key: "libelle_code_naf",         label: "Libellé NAF" },
+  { key: "domaine_activite",         label: "Domaine d’activité" },
+  { key: "siege",                    label: "Siège (JSON)" },
+  { key: "villes",                   label: "Villes (JSON)" },
+  { key: "conventions_collectives",  label: "Conventions collectives (JSON)" },
+  { key: "date_cessation",           label: "Date cessation" },
+  { key: "entreprise_employeuse",    label: "Entreprise employeuse" },
+  { key: "tranche_effectif",         label: "Tranche effectif" },
+  { key: "effectif",                 label: "Effectif" },
+  { key: "effectif_min",             label: "Effectif min." },
+  { key: "effectif_max",             label: "Effectif max." },
+  { key: "economie_sociale_et_solidaire", label: "ESS" },
+  { key: "annee_effectif",           label: "Année effectif" },
+  { key: "association",              label: "Association" },
+  { key: "capital",                  label: "Capital" },
+  { key: "chiffre_affaires",         label: "Chiffre d’affaires" },
+  { key: "resultat",                 label: "Résultat" },
+  { key: "effectifs_finances",       label: "Effectifs finances" },
+  { key: "annee_finances",           label: "Année finances" },
+];
